@@ -1,0 +1,9 @@
+name: DaqPvP
+version: 1.3
+main: com.daqpvp.Main
+api-version: 1.21
+commands:
+  kit:
+    description: 100コインでキットを購入します
+  setkit:
+    description: 現在の持ち物をキットとして保存（OP専用）
