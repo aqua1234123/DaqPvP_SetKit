@@ -1,6 +1,4 @@
-.github/workflows/maven-build.yml
-
-name: Java CI with Maven & Release
+name: Java CI with Maven
 
 on:
   push:
@@ -12,21 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: リポジトリをチェックアウト
-      uses: actions/checkout@v3
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v3
 
-    - name: Java をセットアップ
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
+      - name: Java をセットアップ
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Maven ビルド
-      run: mvn clean package
+      - name: Maven ビルド
+        run: mvn clean package
 
-    - name: Release にアップロード
-      uses: softprops/action-gh-release@v1
-      with:
-        files: target/*.jar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release にアップロード
+        uses: softprops/action-gh-release@v1
+        with:
+          files: target/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
